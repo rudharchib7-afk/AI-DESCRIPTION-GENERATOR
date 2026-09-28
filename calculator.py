@@ -1,4 +1,4 @@
-# Calculator Functions - Main Branch Version
+# Calculator Functions - Resolved Version
 
 def add(a, b):
     """Function to add two numbers"""
