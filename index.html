@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Describely â€” AI Product Description Generator</title>
+  <meta name="description" content="Turn product details into high-converting, on-brand marketing copy in seconds." />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><path d="m5 5 2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+        </span>
+        Describely
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#generator">Generator</a>
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#" class="btn btn-ghost">Sign in</a>
+        <a href="#generator" class="btn btn-primary">Start free</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow"><span class="dot"></span> AI-powered copywriting</span>
+      <h1>Write product descriptions that <span class="accent">actually sell</span></h1>
+      <p class="sub">Turn a few product details into polished, on-brand marketing copy in seconds. Adjust tone, length, and SEO keywords â€” then copy and ship.</p>
+      <div class="hero-cta">
+        <a href="#generator" class="btn btn-primary btn-lg">Generate a description</a>
+        <a href="#how" class="btn btn-outline btn-lg">See how it works</a>
+      </div>
+      <div class="trust-row">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> No credit card required</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> 3 unique angles per run</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> SEO title & meta included</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Generator -->
+  <section class="workbench" id="generator">
+    <div class="container">
+      <div class="workbench-grid">
+
+        <!-- Input Form -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              Product details
+            </div>
+            <p class="card-desc">Tell us about your product and we'll craft the copy.</p>
+          </div>
+          <div class="card-body">
+            <div class="field">
+              <label for="pname">Product name</label>
+              <input class="input" id="pname" type="text" placeholder="e.g. Aurora Wireless Headphones" value="Aurora Wireless Headphones" />
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="cat">Category</label>
+                <select class="select" id="cat">
+                  <option>Electronics</option>
+                  <option>Apparel &amp; Fashion</option>
+                  <option>Home &amp; Living</option>
+                  <option>Beauty &amp; Wellness</option>
+                  <option>Food &amp; Beverage</option>
+                  <option>Sports &amp; Outdoors</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="aud">Target audience</label>
+                <input class="input" id="aud" type="text" placeholder="e.g. Remote workers" value="Remote workers" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="featureInput">Key features <span class="hint">â€” press Enter to add</span></label>
+              <div class="chips" id="featureChips" data-kind="feature">
+                <input class="chip-input" id="featureInput" type="text" placeholder="Add a featureâ€¦" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="keywordInput">SEO keywords <span class="hint">â€” optional</span></label>
+              <div class="chips" id="keywordChips" data-kind="keyword">
+                <input class="chip-input" id="keywordInput" type="text" placeholder="Add a keywordâ€¦" />
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="field">
+              <label>Tone of voice</label>
+              <div class="tone-grid" id="toneGrid">
+                <div class="tone-opt active" data-tone="Professional">Professional</div>
+                <div class="tone-opt" data-tone="Friendly">Friendly</div>
+                <div class="tone-opt" data-tone="Luxury">Luxury</div>
+                <div class="tone-opt" data-tone="Playful">Playful</div>
+                <div class="tone-opt" data-tone="Bold">Bold</div>
+                <div class="tone-opt" data-tone="Minimal">Minimal</div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="len">Length <span class="hint" id="lenHint">â€” Medium (~60 words)</span></label>
+              <input type="range" id="len" min="0" max="2" value="1" />
+              <div class="range-labels"><span>Short</span><span>Medium</span><span>Long</span></div>
+            </div>
+
+            <button class="btn btn-primary btn-block btn-lg" id="generateBtn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+              <span id="generateBtnText">Generate descriptions</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="card">
+          <div class="card-body">
+            <div class="results-head">
+              <div class="card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                Generated copy
+              </div>
+              <span class="count" id="resultsCount">3 variations ready</span>
+            </div>
+            <p class="card-desc" style="margin-bottom:18px;">Pick the angle that fits best, tweak, and copy.</p>
+
+            <div class="tabs">
+              <input type="radio" name="tabs" id="tab1" checked />
+              <input type="radio" name="tabs" id="tab2" />
+              <input type="radio" name="tabs" id="tab3" />
+
+              <div class="tab-labels">
+                <label for="tab1">Benefit-led</label>
+                <label for="tab2">Story-driven</label>
+                <label for="tab3">Feature-focused</label>
+              </div>
+
+              <div class="tab-content">
+                <div class="tab-panel" id="panel1"></div>
+                <div class="tab-panel" id="panel2"></div>
+                <div class="tab-panel" id="panel3"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="band" id="how" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <h2>From details to done in three steps</h2>
+        <p>No copywriting experience needed. Just describe your product and let Describely handle the words.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Describe your product</h3>
+          <p>Add the name, category, audience, and a few key features. The more detail, the sharper the copy.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Pick tone &amp; length</h3>
+          <p>Choose from six brand voices and dial in the perfect length for your storefront or catalog.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Generate &amp; copy</h3>
+          <p>Get three distinct angles with SEO titles and meta descriptions. Copy the winner and ship it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="band" id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>Everything you need to sell more</h2>
+        <p>Purpose-built for merchants, marketers, and busy store owners.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></div>
+          <h3>Multiple angles</h3>
+          <p>Every run returns benefit-led, story-driven, and feature-focused versions so you can A/B test instantly.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>SEO built in</h3>
+          <p>Weave in keywords and get an optimized title and meta description ready for search engines.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <h3>Six brand voices</h3>
+          <p>Professional, friendly, luxury, playful, bold, or minimal â€” match copy to your brand in one click.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div>
+          <h3>One-click copy</h3>
+          <p>Grab the finished description, highlights, and SEO metadata and paste straight into your store.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14M5 2h14M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg></div>
+          <h3>Instant results</h3>
+          <p>Generate polished, ready-to-publish descriptions in seconds instead of hours of drafting.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
+          <h3>Fine-tuned control</h3>
+          <p>Adjust length, swap features, and regenerate any variation until the copy is exactly right.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="band" style="padding-top:0;">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Ready to write better descriptions?</h2>
+        <p>Join thousands of merchants creating high-converting product copy in seconds.</p>
+        <a href="#generator" class="btn btn-primary btn-lg">Start generating free</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band" id="faq" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head">
+        <h2>Frequently asked questions</h2>
+        <p>Everything you need to know about Describely.</p>
+      </div>
+      <div class="faq">
+        <details class="faq-item" open>
+          <summary>Do I need any writing experience? <span class="plus">+</span></summary>
+          <p>Not at all. Just enter a few product details and Describely produces polished, publish-ready copy for you. You can edit anything before you copy it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How many descriptions do I get per run? <span class="plus">+</span></summary>
+          <p>Every generation returns three distinct angles â€” benefit-led, story-driven, and feature-focused â€” so you can compare and choose the best fit for your storefront.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I match my brand voice? <span class="plus">+</span></summary>
+          <p>Yes. Choose from six tones â€” professional, friendly, luxury, playful, bold, and minimal â€” and adjust the length to suit your channel.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the copy SEO-friendly? <span class="plus">+</span></summary>
+          <p>Add your target keywords and each description comes with an optimized SEO title and meta description ready to paste into your product page.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="#" class="brand" style="font-size:16px;">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg>
+        </span>
+        Describely
+      </a>
+      <span class="muted">Â© 2026 Describely. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+            <div class="field">
+              <label for="keywordInput">SEO keywords <span class="hint">â€” optional</span></label>
+              <div class="chips" id="keywordChips" data-kind="keyword">
+                <input class="chip-input" id="keywordInput" type="text" placeholder="Add a keywordâ€¦" />
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="field">
+              <label>Tone of voice</label>
+              <div class="tone-grid" id="toneGrid">
+                <div class="tone-opt active" data-tone="Professional">Professional</div>
+                <div class="tone-opt" data-tone="Friendly">Friendly</div>
+                <div class="tone-opt" data-tone="Luxury">Luxury</div>
+                <div class="tone-opt" data-tone="Playful">Playful</div>
+                <div class="tone-opt" data-tone="Bold">Bold</div>
+                <div class="tone-opt" data-tone="Minimal">Minimal</div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="len">Length <span class="hint" id="lenHint">â€” Medium (~60 words)</span></label>
+              <input type="range" id="len" min="0" max="2" value="1" />
+              <div class="range-labels"><span>Short</span><span>Medium</span><span>Long</span></div>
+            </div>
+
+            <button class="btn btn-primary btn-block btn-lg" id="generateBtn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+              <span id="generateBtnText">Generate descriptions</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="card">
+          <div class="card-body">
+            <div class="results-head">
+              <div class="card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                Generated copy
+              </div>
+              <span class="count" id="resultsCount">3 variations ready</span>
+            </div>
+            <p class="card-desc" style="margin-bottom:18px;">Pick the angle that fits best, tweak, and copy.</p>
+
+            <div class="tabs">
+              <input type="radio" name="tabs" id="tab1" checked />
+              <input type="radio" name="tabs" id="tab2" />
+              <input type="radio" name="tabs" id="tab3" />
+
+              <div class="tab-labels">
+                <label for="tab1">Benefit-led</label>
+                <label for="tab2">Story-driven</label>
+                <label for="tab3">Feature-focused</label>
+              </div>
+
+              <div class="tab-content">
+                <div class="tab-panel" id="panel1"></div>
+                <div class="tab-panel" id="panel2"></div>
+                <div class="tab-panel" id="panel3"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="band" id="how" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <h2>From details to done in three steps</h2>
+        <p>No copywriting experience needed. Just describe your product and let Describely handle the words.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Describe your product</h3>
+          <p>Add the name, category, audience, and a few key features. The more detail, the sharper the copy.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Pick tone &amp; length</h3>
+          <p>Choose from six brand voices and dial in the perfect length for your storefront or catalog.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Generate &amp; copy</h3>
+          <p>Get three distinct angles with SEO titles and meta descriptions. Copy the winner and ship it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="band" id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>Everything you need to sell more</h2>
+        <p>Purpose-built for merchants, marketers, and busy store owners.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></div>
+          <h3>Multiple angles</h3>
+          <p>Every run returns benefit-led, story-driven, and feature-focused versions so you can A/B test instantly.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>SEO built in</h3>
+          <p>Weave in keywords and get an optimized title and meta description ready for search engines.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <h3>Six brand voices</h3>
+          <p>Professional, friendly, luxury, playful, bold, or minimal â€” match copy to your brand in one click.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div>
+          <h3>One-click copy</h3>
+          <p>Grab the finished description, highlights, and SEO metadata and paste straight into your store.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14M5 2h14M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg></div>
+          <h3>Instant results</h3>
+          <p>Generate polished, ready-to-publish descriptions in seconds instead of hours of drafting.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
+          <h3>Fine-tuned control</h3>
+          <p>Adjust length, swap features, and regenerate any variation until the copy is exactly right.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="band" style="padding-top:0;">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Ready to write better descriptions?</h2>
+        <p>Join thousands of merchants creating high-converting product copy in seconds.</p>
+        <a href="#generator" class="btn btn-primary btn-lg">Start generating free</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band" id="faq" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head">
+        <h2>Frequently asked questions</h2>
+        <p>Everything you need to know about Describely.</p>
+      </div>
+      <div class="faq">
+        <details class="faq-item" open>
+          <summary>Do I need any writing experience? <span class="plus">+</span></summary>
+          <p>Not at all. Just enter a few product details and Describely produces polished, publish-ready copy for you. You can edit anything before you copy it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How many descriptions do I get per run? <span class="plus">+</span></summary>
+          <p>Every generation returns three distinct angles â€” benefit-led, story-driven, and feature-focused â€” so you can compare and choose the best fit for your storefront.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I match my brand voice? <span class="plus">+</span></summary>
+          <p>Yes. Choose from six tones â€” professional, friendly, luxury, playful, bold, and minimal â€” and adjust the length to suit your channel.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the copy SEO-friendly? <span class="plus">+</span></summary>
+          <p>Add your target keywords and each description comes with an optimized SEO title and meta description ready to paste into your product page.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="#" class="brand" style="font-size:16px;">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg>
+        </span>
+        Describely
+      </a>
+      <span class="muted">Â© 2026 Describely. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+    <span id="toastText">Copied to clipboard</span>
+  </div>
+
+  <div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:100; justify-content:center; align-items:center;">
+    <div style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.4); padding: 40px; border-radius: 16px; width: 400px; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+      <h2 style="margin-bottom: 20px;">Sign In</h2>
+      <form id="loginForm">
+        <input type="email" name="email" placeholder="Email" required style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.8); border-radius: 8px;">
+        <input type="password" name="password" placeholder="Password" required style="width: 100%; padding: 10px; margin-bottom: 20px; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.8); border-radius: 8px;">
+        <button type="submit" style="width: 100%; padding: 10px; background: #3b5bdb; color: white; border: none; border-radius: 8px; cursor: pointer;">Login</button>
+        <button type="button" id="closeModalBtn" style="width: 100%; padding: 10px; background: transparent; border: none; margin-top: 10px; cursor: pointer;">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

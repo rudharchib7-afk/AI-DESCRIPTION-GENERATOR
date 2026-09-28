@@ -1,0 +1,39 @@
+{
+  "tones": {
+    "Professional": {
+      "opener": "Engineered for performance,",
+      "adj": ["reliable", "precise", "refined"],
+      "closer": "Built for those who expect more."
+    },
+    "Friendly": {
+      "opener": "Say hello to your new favorite,",
+      "adj": ["easy", "comfortable", "dependable"],
+      "closer": "You're going to love it."
+    },
+    "Luxury": {
+      "opener": "Crafted without compromise,",
+      "adj": ["exquisite", "premium", "sophisticated"],
+      "closer": "Indulgence, redefined."
+    },
+    "Playful": {
+      "opener": "Ready for the fun part?",
+      "adj": ["delightful", "clever", "irresistible"],
+      "closer": "Go on — treat yourself."
+    },
+    "Bold": {
+      "opener": "Stop settling.",
+      "adj": ["powerful", "game-changing", "unstoppable"],
+      "closer": "This changes everything."
+    },
+    "Minimal": {
+      "opener": "Simple. Considered.",
+      "adj": ["clean", "essential", "effortless"],
+      "closer": "Nothing more than you need."
+    }
+  },
+  "templates": {
+    "benefit": "{opener} the {name} turns {f0} into a real advantage for {audience}. Enjoy {f1} that works the way you do, plus {f2} you can count on every day. It's {a_or_an_adj0} {adj0}, {adj1} upgrade that pays off from the first use. {closer}",
+    "story": "Picture your day with the {name} in hand. From the very first moment, {f0} sets the tone, while {f1} keeps things smooth and {f2} earns its place in your routine. Designed with {audience} in mind, it fits naturally into real life — {adj2} where it counts. {closer}",
+    "feature": "The {name} delivers everything {audience} expect from {category}: {featStr}. Each detail is {adj0} and {adj1}, combining to create a product that performs consistently and looks the part. Ready out of the box, built to last."
+  }
+}
