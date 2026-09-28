@@ -1,0 +1,5 @@
+# Ignored files
+scratch_images/
+*.log
+__pycache__/
+.DS_Store
